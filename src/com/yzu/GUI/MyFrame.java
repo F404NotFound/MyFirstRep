@@ -3,7 +3,6 @@ package com.yzu.GUI;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,22 +22,17 @@ import javax.swing.JTable;
 import com.yzu.game.Game;
 
 public class MyFrame extends Frame{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public MyFrame() {
 		setBounds(200,80,600,500);
 		add(new CenterPanel());
-		setVisible(true);	}
+		setVisible(true);	
+	}
 }
 
 class CenterPanel extends Panel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public CenterPanel(){
 		add(new WestPanel(this),BorderLayout.WEST);
@@ -122,7 +116,6 @@ class WestPanel extends Panel{
 				}else{
 					cp.remove(cp.getComponent(1));
 					cp.add(new EastPanel(cp,n1,n2,n3),BorderLayout.CENTER);
-					
 				}
 				cp.validate();
 			}else{
@@ -150,21 +143,20 @@ class EastPanel extends Panel{
         table = getSimpleTable();    
         JScrollPane jsPane = new JScrollPane(table);
         add(jsPane);
-		setLayout(new FlowLayout());
-		setBounds(145,5,160,460);
+        jsPane.setBounds(200,5,200,460);
+		setLayout(null);
 		setVisible(true);
-		repaint();
 	}
 	public void createTableData(){  
  		ArrayList<Object> result  = new Game().sort(n1, n2, n3);
 		data = new Object[result.size()][2];
 		for(int i =0;i<result.size();i++){
-				data[i] = new Object[]{i,result.get(i)};
+				data[i] = new Object[]{i+1,result.get(i)};
 			}
-	    }  
-	    public JTable getSimpleTable(){  
-	        table = new JTable(data,colname);  
-	        return table;  
-	    }  
+    }  
+    public JTable getSimpleTable(){  
+        table = new JTable(data,colname);  
+        return table;  
+    }  
 }
 

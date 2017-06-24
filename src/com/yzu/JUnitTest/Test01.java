@@ -1,5 +1,7 @@
 package com.yzu.JUnitTest;
 
+import java.util.ArrayList;
+
 import com.yzu.game.Game;
 
 import junit.framework.TestCase;
@@ -19,11 +21,14 @@ public class Test01 extends TestCase{
         super.tearDown();  
     }  
     
-    public void testHaveNum1(){
-    	assertTrue(game.haveNum1(23, 3));
-    }
-    
     public void testSort(){
-    	
+    	ArrayList<Object> list = game.sort(3, 5, 7);
+    	assertEquals("Fizz", list.get(2));
+    	assertEquals("FizzBuzz", list.get(14));
+    	assertEquals("FizzWhizz", list.get(20));
+    	assertEquals("BuzzWhizz", list.get(69));
+    	assertEquals("Fizz", list.get(30));
+    	assertEquals(1, list.get(0));
     }
+
 }
